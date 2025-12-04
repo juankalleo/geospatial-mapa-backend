@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgis/postgis:15-3.4
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: geospatial_mapa_development
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  web:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "3001:3000"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_USERNAME: postgres
+      DB_PASSWORD: password
+      DB_NAME: geospatial_mapa_development
+      RAILS_ENV: development
+      SECRET_KEY_BASE: development-secret
+    command: ["bash", "-lc", "bundle exec puma -C config/puma.rb"]
+
+volumes:
+  db_data:
