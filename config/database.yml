@@ -1,34 +1,21 @@
-default:
+default: &default
   adapter: postgis
   encoding: unicode
-  pool: 5
-  username: postgres
-  password: postgres
-  host: 127.0.0.1
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV['DB_USERNAME'] || 'postgres' %>
+  password: <%= ENV['DB_PASSWORD'] || 'postgres' %>
+  host: <%= ENV['DB_HOST'] || '127.0.0.1' %>
 
 development:
-  adapter: postgis
-  encoding: unicode
-  pool: 5
-  username: postgres
-  password: postgres
-  host: 127.0.0.1
+  <<: *default
   database: geospatial_mapa_development
 
 test:
-  adapter: postgis
-  encoding: unicode
-  pool: 5
-  username: postgres
-  password: postgres
-  host: 127.0.0.1
+  <<: *default
   database: geospatial_mapa_test
 
 production:
-  adapter: postgis
-  encoding: unicode
-  pool: 5
-  username: postgres
-  password: postgres
-  host: 127.0.0.1
-  database: geospatial_mapa_production
+  # Use DATABASE_URL if available (Render provides it). Fallback to previously configured values.
+  url: <%= ENV['DATABASE_URL'] %>
+  <<: *default
+  database: <%= ENV['DB_NAME'] || 'geospatial_mapa_production' %>
