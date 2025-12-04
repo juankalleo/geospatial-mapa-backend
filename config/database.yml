@@ -1,0 +1,34 @@
+default:
+  adapter: postgis
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: postgres
+  host: 127.0.0.1
+
+development:
+  adapter: postgis
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: postgres
+  host: 127.0.0.1
+  database: geospatial_mapa_development
+
+test:
+  adapter: postgis
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: postgres
+  host: 127.0.0.1
+  database: geospatial_mapa_test
+
+production:
+  adapter: postgis
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: postgres
+  host: 127.0.0.1
+  database: geospatial_mapa_production

@@ -1,0 +1,10 @@
+Started GET "/" for 127.0.0.1 at 2025-12-04 09:17:53 -0400
+Started GET "/municipios" for 127.0.0.1 at 2025-12-04 09:17:53 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/municipios"):
+  
+Started GET "/" for 127.0.0.1 at 2025-12-04 09:18:25 -0400
+Started GET "/municipios" for 127.0.0.1 at 2025-12-04 09:18:25 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/municipios"):
+  
